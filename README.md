@@ -496,8 +496,7 @@ The Write Engine continues until all FIFO data has been written successfully.
 
 ### Figure 2.7 – Write Engine FSM
 
-```
-<img width="310" height="314" alt="image" src="https://github.com/user-attachments/assets/711821de-d7b4-44f6-b1ab-18232f1c52ac" />
+<img width="314" height="315" alt="image" src="https://github.com/user-attachments/assets/1a4bafaf-a3d4-4a62-a0f2-a0f9cbdc1d9d" />
 
 
 ---
@@ -507,6 +506,9 @@ The Write Engine continues until all FIFO data has been written successfully.
 The existing AXI DMA Controller provides a modular architecture consisting of separate control and data paths. The processor configures the DMA through Control and Status Registers, while the Read Engine, FIFO, and Write Engine cooperate to perform autonomous memory-to-memory transfers. Although the architecture efficiently supports single DMA transfers, it requires processor intervention for every new transfer. This limitation motivates the Scatter-Gather enhancement discussed in the next chapter.
 
 ---
+
+### End of Chapter 2
+
 
 # CHAPTER 3
 
@@ -593,17 +595,6 @@ Applications requiring hundreds or thousands of transfers become inefficient.
 
 ---
 
-### Figure 3.1 – Existing DMA Operation
-
-```text
-------------------------------------------------------
-|                                                    |
-|      [Insert Existing DMA Limitation Diagram]      |
-|                                                    |
-------------------------------------------------------
-```
-
----
 
 # 3.3 Scatter-Gather DMA Concept
 
@@ -665,13 +656,8 @@ The processor is free to execute other tasks while the DMA controller processes 
 
 ### Figure 3.2 – Scatter-Gather Architecture
 
-```text
-------------------------------------------------------
-|                                                    |
-|    [Insert Scatter-Gather Architecture Image]      |
-|                                                    |
-------------------------------------------------------
-```
+<img width="1600" height="775" alt="image" src="https://github.com/user-attachments/assets/f3c631fb-4e7d-4c7a-86ae-62f2abf17e40" />
+
 
 ---
 
@@ -715,16 +701,6 @@ Each descriptor occupies six 32-bit words in memory.
 The **Next Descriptor Address** links the current descriptor to the next descriptor, creating a linked list of DMA operations.
 
 ---
-
-### Figure 3.3 – Descriptor Format
-
-```text
-------------------------------------------------------
-|                                                    |
-|        [Insert Descriptor Format Figure]           |
-|                                                    |
-------------------------------------------------------
-```
 
 ---
 
@@ -853,15 +829,6 @@ IDLE
 
 ---
 
-### Figure 3.4 – Scatter-Gather FSM
-
-```text
-------------------------------------------------------
-|                                                    |
-|        [Insert Scatter-Gather FSM Figure]          |
-|                                                    |
-------------------------------------------------------
-```
 
 ---
 
@@ -993,16 +960,6 @@ dma_axi_simple
 ├── dma_axi_simple_desc_fetch
 │
 └── dma_axi_simple_descriptor
-```
-
-### Figure 4.1 – RTL Module Hierarchy
-
-```
----------------------------------------------------------
-|                                                       |
-|       [ Insert RTL Hierarchy Screenshot Here ]        |
-|                                                       |
----------------------------------------------------------
 ```
 
 ---
@@ -1188,15 +1145,7 @@ System Memory
 
 ---
 
-### Figure 4.2 – Module Connectivity
 
-```
----------------------------------------------------------
-|                                                       |
-|     [ Insert RTL Connectivity Diagram Here ]         |
-|                                                       |
----------------------------------------------------------
-```
 
 ---
 
