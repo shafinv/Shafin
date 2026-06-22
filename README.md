@@ -32,131 +32,6 @@
 RTL Design
 
 ---
-
-# TABLE OF CONTENTS
-
-## Chapter 1 – Introduction
-
-1.1 Background
-
-1.2 Motivation
-
-1.3 Project Objectives
-
-1.4 Scope of the Project
-
----
-
-## Chapter 2 – AXI DMA Architecture
-
-2.1 Existing DMA Architecture
-
-2.2 Top-Level Architecture
-
-2.3 DMA Working Principle
-
-2.4 DMA Data Flow
-
-2.5 Control and Status Registers
-
-2.6 DMA Controller FSM
-
-2.7 Read Engine FSM
-
-2.8 Write Engine FSM
-
----
-
-## Chapter 3 – Scatter-Gather Enhancement
-
-3.1 Existing Design Limitations
-
-3.2 Scatter-Gather Concept
-
-3.3 Descriptor Format
-
-3.4 Scatter-Gather State Machine
-
-3.5 Architectural Changes
-
----
-
-## Chapter 4 – RTL Design Implementation
-
-4.1 RTL Design Methodology
-
-4.2 RTL Module Description
-
-4.3 Module Integration
-
-4.4 Design Flow
-
-4.5 RTL Enhancements
-
----
-
-## Chapter 5 – RTL Analysis
-
-5.1 Descriptor Fetch Operation
-
-5.2 Data Transfer Flow
-
-5.3 Scatter-Gather Execution
-
-5.4 Waveform Analysis
-
----
-
-## Chapter 6 – Conclusion
-
-6.1 Achievements
-
-6.2 Future Scope
-
-Appendix A – RTL Module List
-
-Appendix B – Team Contribution
-
-Appendix C – References
-
----
-
-# LIST OF FIGURES
-
-Figure 2.1 Existing AXI DMA Architecture
-
-Figure 2.2 Top-Level RTL Architecture
-
-Figure 2.3 DMA Data Flow
-
-Figure 2.4 CSR Register Map
-
-Figure 2.5 DMA Controller FSM
-
-Figure 2.6 Read Engine FSM
-
-Figure 2.7 Write Engine FSM
-
-Figure 3.1 Existing DMA Limitation
-
-Figure 3.2 Scatter-Gather Architecture
-
-Figure 3.3 Descriptor Format
-
-Figure 3.4 Scatter-Gather FSM
-
-Figure 4.1 RTL Module Hierarchy
-
-Figure 4.2 RTL Connectivity
-
-Figure 5.1 Descriptor Fetch Flow
-
-Figure 5.2 DMA Transfer Flow
-
-Figure 5.3 Waveform Analysis
-
----
-
 # CHAPTER 1
 
 # INTRODUCTION
@@ -283,15 +158,9 @@ The existing AXI DMA controller consists of the following major functional block
 
 ### Architecture Diagram
 
-> **Figure 2.1 – Existing AXI DMA Architecture**
 
-```
-------------------------------------------------------
-|                                                    |
-|             [Insert Architecture Image Here]       |
-|                                                    |
-------------------------------------------------------
-```
+<img width="584" height="285" alt="image" src="https://github.com/user-attachments/assets/7c565ce4-eadd-4b8b-979c-cd4dabe9dcfc" />
+
 
 ---
 
@@ -421,19 +290,7 @@ dma_axi_simple
       ├── dma_axi_simple_core_read
       ├── dma_axi_simple_fifo_sync_small
       └── dma_axi_simple_core_write
-```
-
-### Figure 2.2 – RTL Module Hierarchy
-
-```
-------------------------------------------------------
-|                                                    |
-|      [Insert RTL Module Hierarchy Image Here]      |
-|                                                    |
-------------------------------------------------------
-```
-
----
+```     
 
 # 2.5 DMA Operation
 
@@ -510,14 +367,8 @@ After completion,
 ---
 
 ### Figure 2.3 – DMA Operation Flow
-
-```
-------------------------------------------------------
-|                                                    |
-|        [Insert DMA Flowchart Here]                 |
-|                                                    |
-------------------------------------------------------
-```
+---------------------------------------------
+<img width="240" height="372" alt="image" src="https://github.com/user-attachments/assets/d7c76c04-3ca3-4a45-a0d3-1d4ced39c455" />
 
 ---
 
@@ -558,20 +409,6 @@ Stores the starting source memory address.
 ## DESTINATION Register (0x48)
 
 Stores the starting destination memory address.
-
----
-
-### Figure 2.4 – CSR Register Map
-
-```
-------------------------------------------------------
-|                                                    |
-|      [Insert CSR Register Diagram Here]            |
-|                                                    |
-------------------------------------------------------
-```
-
----
 
 # 2.7 DMA Controller FSM
 
@@ -615,13 +452,7 @@ The major states are:
 
 ### Figure 2.5 – DMA Controller FSM
 
-```
-------------------------------------------------------
-|                                                    |
-|        [Insert DMA Controller FSM Here]            |
-|                                                    |
-------------------------------------------------------
-```
+<img width="293" height="299" alt="image" src="https://github.com/user-attachments/assets/6f747fa8-d24e-4e85-b02c-4487c5f6d9ea" />
 
 ---
 
@@ -643,13 +474,7 @@ The Read Engine continues until all requested bytes have been received.
 
 ### Figure 2.6 – Read Engine FSM
 
-```
-------------------------------------------------------
-|                                                    |
-|          [Insert Read FSM Diagram Here]            |
-|                                                    |
-------------------------------------------------------
-```
+<img width="228" height="341" alt="image" src="https://github.com/user-attachments/assets/b94dd38f-bce3-4e87-b1a9-6b554e2f7fa5" />
 
 ---
 
@@ -672,12 +497,8 @@ The Write Engine continues until all FIFO data has been written successfully.
 ### Figure 2.7 – Write Engine FSM
 
 ```
-------------------------------------------------------
-|                                                    |
-|          [Insert Write FSM Diagram Here]           |
-|                                                    |
-------------------------------------------------------
-```
+<img width="310" height="314" alt="image" src="https://github.com/user-attachments/assets/711821de-d7b4-44f6-b1ab-18232f1c52ac" />
+
 
 ---
 
@@ -772,17 +593,7 @@ Applications requiring hundreds or thousands of transfers become inefficient.
 
 ---
 
-### Figure 3.1 – Existing DMA Operation
 
-```text
-------------------------------------------------------
-|                                                    |
-|      [Insert Existing DMA Limitation Diagram]      |
-|                                                    |
-------------------------------------------------------
-```
-
----
 
 # 3.3 Scatter-Gather DMA Concept
 
@@ -840,17 +651,6 @@ Done
 
 The processor is free to execute other tasks while the DMA controller processes all descriptors independently.
 
----
-
-### Figure 3.2 – Scatter-Gather Architecture
-
-```text
-------------------------------------------------------
-|                                                    |
-|    [Insert Scatter-Gather Architecture Image]      |
-|                                                    |
-------------------------------------------------------
-```
 
 ---
 
@@ -892,18 +692,6 @@ Each descriptor contains the following fields.
 Each descriptor occupies six 32-bit words in memory.
 
 The **Next Descriptor Address** links the current descriptor to the next descriptor, creating a linked list of DMA operations.
-
----
-
-### Figure 3.3 – Descriptor Format
-
-```text
-------------------------------------------------------
-|                                                    |
-|        [Insert Descriptor Format Figure]           |
-|                                                    |
-------------------------------------------------------
-```
 
 ---
 
@@ -1033,14 +821,7 @@ IDLE
 ---
 
 ### Figure 3.4 – Scatter-Gather FSM
-
-```text
-------------------------------------------------------
-|                                                    |
-|        [Insert Scatter-Gather FSM Figure]          |
-|                                                    |
-------------------------------------------------------
-```
+<img width="460" height="324" alt="image" src="https://github.com/user-attachments/assets/57e0ac96-3f23-4f89-bcf5-f2b2295423b2" />
 
 ---
 
@@ -1170,18 +951,7 @@ dma_axi_simple
 ├── dma_axi_simple_desc_fetch
 │
 └── dma_axi_simple_descriptor
-```
-
-### Figure 4.1 – RTL Module Hierarchy
-
-```
----------------------------------------------------------
-|                                                       |
-|       [ Insert RTL Hierarchy Screenshot Here ]        |
-|                                                       |
----------------------------------------------------------
-```
-
+```  
 ---
 
 # 4.4 RTL Module Description
@@ -1362,19 +1132,6 @@ AXI Master Interface
       ▼
 System Memory
 ```
-
----
-
-### Figure 4.2 – Module Connectivity
-
-```
----------------------------------------------------------
-|                                                       |
-|     [ Insert RTL Connectivity Diagram Here ]         |
-|                                                       |
----------------------------------------------------------
-```
-
 ---
 
 # 4.6 Design Flow
@@ -1620,18 +1377,6 @@ DMA Registers
 
 ---
 
-### Figure 5.1 – Descriptor Fetch Operation
-
-```text
-----------------------------------------------------------
-|                                                        |
-|      [ Insert Descriptor Fetch Waveform Here ]         |
-|                                                        |
-----------------------------------------------------------
-```
-
----
-
 # 5.4 DMA Data Transfer Operation
 
 Once the descriptor has been decoded, the Scatter-Gather FSM configures the existing DMA core.
@@ -1670,17 +1415,6 @@ Write Engine
 Destination Memory
 ```
 
----
-
-### Figure 5.2 – DMA Data Flow
-
-```text
-----------------------------------------------------------
-|                                                        |
-|          [ Insert DMA Data Flow Diagram ]              |
-|                                                        |
-----------------------------------------------------------
-```
 
 ---
 
@@ -1792,122 +1526,16 @@ the FSM repeats the entire sequence automatically.
 
 ---
 
-### Figure 5.3 – Scatter-Gather State Transition
-
-```text
-----------------------------------------------------------
-|                                                        |
-|        [ Insert Scatter-Gather FSM Diagram ]           |
-|                                                        |
-----------------------------------------------------------
-```
-
 ---
 
 # 5.7 RTL Waveform Analysis
 
 The operation of the Scatter-Gather DMA can be observed using RTL simulation waveforms generated in Vivado.
 
-The following waveforms should be included in the report.
+<img width="1600" height="654" alt="image" src="https://github.com/user-attachments/assets/c898d249-0a9f-42a5-8062-7e2d444a2229" />
+<img width="1600" height="662" alt="image" src="https://github.com/user-attachments/assets/57f29832-f846-4620-8eb3-3d4a07e87ff4" />
 
----
 
-## Waveform 1 – Reset and Initialization
-
-Observe:
-
-* Clock
-* Reset
-* DMA Enable
-* GO Signal
-
-This waveform demonstrates the initialization of the DMA controller before transfer begins.
-
----
-
-### Figure 5.4 – Reset Waveform
-
-```text
-----------------------------------------------------------
-|                                                        |
-|        [ Insert Reset Waveform Screenshot ]            |
-|                                                        |
-----------------------------------------------------------
-```
-
----
-
-## Waveform 2 – Descriptor Fetch
-
-Observe:
-
-* AXI Read Address
-* AXI Read Data
-* Descriptor Register Loading
-
-This waveform illustrates the descriptor fetch operation performed by the Scatter-Gather controller.
-
----
-
-### Figure 5.5 – Descriptor Fetch Waveform
-
-```text
-----------------------------------------------------------
-|                                                        |
-|     [ Insert Descriptor Fetch Waveform Screenshot ]    |
-|                                                        |
-----------------------------------------------------------
-```
-
----
-
-## Waveform 3 – DMA Transfer
-
-Observe:
-
-* AXI Read Transactions
-* FIFO Activity
-* AXI Write Transactions
-
-This waveform demonstrates the operation of the original DMA core after the descriptor has been decoded.
-
----
-
-### Figure 5.6 – DMA Transfer Waveform
-
-```text
-----------------------------------------------------------
-|                                                        |
-|        [ Insert DMA Transfer Waveform Here ]           |
-|                                                        |
-----------------------------------------------------------
-```
-
----
-
-## Waveform 4 – Transfer Completion
-
-Observe:
-
-* DONE Signal
-* BUSY Signal
-* Interrupt Signal (if enabled)
-
-This waveform indicates the completion of one descriptor execution.
-
----
-
-### Figure 5.7 – Completion Waveform
-
-```text
-----------------------------------------------------------
-|                                                        |
-|      [ Insert Transfer Completion Waveform ]           |
-|                                                        |
-----------------------------------------------------------
-```
-
----
 
 # 5.8 Vivado RTL Analysis
 
@@ -1925,15 +1553,8 @@ The RTL schematic demonstrates:
 
 ### Figure 5.8 – Vivado RTL Schematic
 
-```text
-----------------------------------------------------------
-|                                                        |
-|        [ Insert Vivado RTL Schematic Screenshot ]      |
-|                                                        |
-----------------------------------------------------------
-```
+<img width="519" height="413" alt="image" src="https://github.com/user-attachments/assets/d927a65a-95ff-4f94-b2cc-3407d84c7a5c" />
 
----
 
 # 5.9 Chapter Summary
 
@@ -2102,16 +1723,6 @@ The proposed architecture provides a strong foundation for future enhancements s
 
 ---
 
-# APPENDIX D: REFERENCES
-
-1. ARM AMBA AXI4 Protocol Specification.
-2. Xilinx AXI DMA Product Guide (PG021).
-3. IEEE Standard for Verilog Hardware Description Language (IEEE 1364).
-4. IEEE Standard for SystemVerilog (IEEE 1800).
-5. Vivado Design Suite User Guide.
-6. AXI DMA RTL Source Code Documentation.
-
----
 
 # END OF REPORT
 
