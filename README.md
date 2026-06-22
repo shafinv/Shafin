@@ -4,9 +4,7 @@
 
 ---
 
-### Department of Electronics and Communication Engineering
 
-### Government Engineering College Thrissur
 
 ---
 
