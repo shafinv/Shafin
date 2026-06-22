@@ -593,7 +593,17 @@ Applications requiring hundreds or thousands of transfers become inefficient.
 
 ---
 
+### Figure 3.1 – Existing DMA Operation
 
+```text
+------------------------------------------------------
+|                                                    |
+|      [Insert Existing DMA Limitation Diagram]      |
+|                                                    |
+------------------------------------------------------
+```
+
+---
 
 # 3.3 Scatter-Gather DMA Concept
 
@@ -651,6 +661,17 @@ Done
 
 The processor is free to execute other tasks while the DMA controller processes all descriptors independently.
 
+---
+
+### Figure 3.2 – Scatter-Gather Architecture
+
+```text
+------------------------------------------------------
+|                                                    |
+|    [Insert Scatter-Gather Architecture Image]      |
+|                                                    |
+------------------------------------------------------
+```
 
 ---
 
@@ -692,6 +713,18 @@ Each descriptor contains the following fields.
 Each descriptor occupies six 32-bit words in memory.
 
 The **Next Descriptor Address** links the current descriptor to the next descriptor, creating a linked list of DMA operations.
+
+---
+
+### Figure 3.3 – Descriptor Format
+
+```text
+------------------------------------------------------
+|                                                    |
+|        [Insert Descriptor Format Figure]           |
+|                                                    |
+------------------------------------------------------
+```
 
 ---
 
@@ -821,7 +854,14 @@ IDLE
 ---
 
 ### Figure 3.4 – Scatter-Gather FSM
-<img width="460" height="324" alt="image" src="https://github.com/user-attachments/assets/57e0ac96-3f23-4f89-bcf5-f2b2295423b2" />
+
+```text
+------------------------------------------------------
+|                                                    |
+|        [Insert Scatter-Gather FSM Figure]          |
+|                                                    |
+------------------------------------------------------
+```
 
 ---
 
@@ -882,6 +922,8 @@ The Scatter-Gather enhancement provides several improvements over the original D
 The Scatter-Gather enhancement transforms the original single-transfer DMA into a descriptor-based autonomous DMA controller. By introducing a Descriptor Fetch Engine and Scatter-Gather FSM, the DMA is capable of executing multiple transfers without repeated processor intervention. The original Read Engine, FIFO and Write Engine remain unchanged, while the Scatter-Gather controller provides intelligent sequencing of transfer operations through linked descriptors. This enhancement significantly improves throughput, reduces processor overhead, and provides a scalable architecture suitable for high-performance embedded systems.
 
 ---
+
+
 # CHAPTER 4
 
 # RTL DESIGN IMPLEMENTATION
@@ -951,7 +993,18 @@ dma_axi_simple
 ├── dma_axi_simple_desc_fetch
 │
 └── dma_axi_simple_descriptor
-```  
+```
+
+### Figure 4.1 – RTL Module Hierarchy
+
+```
+---------------------------------------------------------
+|                                                       |
+|       [ Insert RTL Hierarchy Screenshot Here ]        |
+|                                                       |
+---------------------------------------------------------
+```
+
 ---
 
 # 4.4 RTL Module Description
@@ -1132,6 +1185,19 @@ AXI Master Interface
       ▼
 System Memory
 ```
+
+---
+
+### Figure 4.2 – Module Connectivity
+
+```
+---------------------------------------------------------
+|                                                       |
+|     [ Insert RTL Connectivity Diagram Here ]         |
+|                                                       |
+---------------------------------------------------------
+```
+
 ---
 
 # 4.6 Design Flow
@@ -1260,6 +1326,7 @@ All remaining transfers are executed automatically.
 The Scatter-Gather enhancement was implemented by adding a Descriptor Fetch Engine and Scatter-Gather Controller while preserving the existing DMA data path. The modular RTL architecture simplifies future expansion and maintains complete compatibility with the original AXI DMA controller. The enhanced controller is capable of autonomous descriptor processing and continuous memory-to-memory data transfers without repeated processor intervention.
 
 ---
+
 
 # CHAPTER 5
 
